@@ -52,12 +52,12 @@ enum {
 
   self.ackTask = [[[NSTask alloc] init] autorelease];
 
-  NSString* ackmateAck = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"ackmate_ack"];
+  NSString* ackmateAck = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"ackmate_bta"];
 
   [self.ackTask setCurrentDirectoryPath:path];
 
   [self.ackTask setLaunchPath:@"/usr/bin/env"];
-  NSMutableArray* args = [NSMutableArray arrayWithObjects:@"perl", @"-CADS", ackmateAck, @"--ackmate", nil];
+  NSMutableArray* args = [NSMutableArray arrayWithObjects:ackmateAck, @"--ackmate", nil];
 
   if (literal) [args addObject:@"--literal"];
   if (words) [args addObject:@"--word-regexp"];
