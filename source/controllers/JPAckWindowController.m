@@ -34,6 +34,7 @@ NSString * const kJPAckFolderReferences = @"kJPAckFolderReferences";
 NSString * const kJPAckSearchHistory = @"kJPAckSearchHistory";
 NSString * const kJPAckSearchOptions = @"kJPAckSearchOptions";
 NSString * const kJPAckWindowPosition = @"kJPAckWindowPosition";
+NSString * const kJPAckUseBTA = @"kJPAckUseBTA";
 
 @synthesize fileName;
 @synthesize projectDirectory;
@@ -50,6 +51,7 @@ NSString * const kJPAckWindowPosition = @"kJPAckWindowPosition";
 @synthesize folders;
 @synthesize currentProcess;
 @synthesize currentTypesProcess;
+@synthesize useBTA;
 
 + (NSSet*)keyPathsForValuesAffectingRunning
 {
@@ -107,6 +109,7 @@ NSString * const kJPAckWindowPosition = @"kJPAckWindowPosition";
   self.context = [[preferences objectForKey:kJPAckShowContext] boolValue];
   self.symlinks = [[preferences objectForKey:kJPAckFollowSymlinks] boolValue];
   self.folders = [[preferences objectForKey:kJPAckFolderReferences] boolValue];
+  self.useBTA = [[preferences objectForKey:kJPAckUseBTA] boolValue];
 
   NSArray* savedHistory = [preferences objectForKey:kJPAckSearchHistory];
   self.history = (savedHistory) ? savedHistory : [NSArray array];
@@ -151,6 +154,7 @@ NSString * const kJPAckWindowPosition = @"kJPAckWindowPosition";
   [preferences setObject:[NSNumber numberWithBool:self.context] forKey:kJPAckShowContext];
   [preferences setObject:[NSNumber numberWithBool:self.symlinks] forKey:kJPAckFollowSymlinks];
   [preferences setObject:[NSNumber numberWithBool:self.folders] forKey:kJPAckFolderReferences];
+  [preferences setObject:[NSNumber numberWithBool:self.useBTA] forKey:kJPAckUseBTA];
 
   [preferences setObject:self.history forKey:kJPAckSearchHistory];
   [preferences setObject:[optionsField objectValue] forKey:kJPAckSearchOptions];
@@ -254,6 +258,7 @@ NSString * const kJPAckWindowPosition = @"kJPAckWindowPosition";
   [self.currentProcess invokeWithTerm:term
       path:path
       searchFolder:selectedSearchFolder
+      useBTA:useBTA
       literal:literal
       nocase:nocase
       words:words

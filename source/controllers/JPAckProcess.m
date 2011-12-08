@@ -44,7 +44,7 @@ enum {
   return self;
 }
 
-- (void)invokeWithTerm:(NSString*)term path:(NSString*)path searchFolder:(NSString*)searchFolder literal:(BOOL)literal nocase:(BOOL)nocase words:(BOOL)words context:(BOOL)context symlinks:(BOOL)symlinks folderPattern:(NSString*)folderPattern options:(NSArray*)options
+- (void)invokeWithTerm:(NSString*)term path:(NSString*)path searchFolder:(NSString*)searchFolder useBTA:(BOOL)useBTA literal:(BOOL)literal nocase:(BOOL)nocase words:(BOOL)words context:(BOOL)context symlinks:(BOOL)symlinks folderPattern:(NSString*)folderPattern options:(NSArray*)options
 {
   ackState = ackInitial;
   [self.ackResult clearContents];
@@ -52,7 +52,12 @@ enum {
 
   self.ackTask = [[[NSTask alloc] init] autorelease];
 
-  NSString* ackmateAck = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"ackmate_bta"];
+    NSString* ackmateAck = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"ackmate_ack"];
+
+
+  if (useBTA) {
+    ackmateAck = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"ackmate_bta"];
+  }
 
   [self.ackTask setCurrentDirectoryPath:path];
 
