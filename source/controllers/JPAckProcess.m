@@ -58,7 +58,7 @@ enum {
   [ackmateAck setString:ackmateAck_base];
 
   if (useBTA) {
-    [ackmateAck appendString:@"_bta"];
+    [ackmateAck appendString:@"_ag"];
   }
   else {
     [ackmateAck appendString:@"_ack"];
