@@ -7,7 +7,7 @@
 @class JPAckProcess;
 @class JPAckTypesProcess;
 
-extern NSString * const kJPAckUseBTA;
+extern NSString * const kJPAckUseAg;
 extern NSString * const kJPAckLiteral;
 extern NSString * const kJPAckShowAdvanced;
 extern NSString * const kJPAckNoCase;
@@ -45,7 +45,7 @@ extern NSString * const kJPAckWindowPosition;
   NSString* term;
   BOOL showAdvanced;
   BOOL nocase;
-  BOOL useBTA;
+  BOOL useAg;
   BOOL literal;
   BOOL words;
   BOOL context;
@@ -61,7 +61,7 @@ extern NSString * const kJPAckWindowPosition;
 @property(nonatomic, copy) NSString* term;
 @property(nonatomic, assign) BOOL showAdvanced;
 @property(nonatomic, assign) BOOL nocase;
-@property(nonatomic, assign) BOOL useBTA;
+@property(nonatomic, assign) BOOL useAg;
 @property(nonatomic, assign) BOOL literal;
 @property(nonatomic, assign) BOOL words;
 @property(nonatomic, assign) BOOL context;

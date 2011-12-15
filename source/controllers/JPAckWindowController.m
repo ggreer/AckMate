@@ -34,7 +34,7 @@ NSString * const kJPAckFolderReferences = @"kJPAckFolderReferences";
 NSString * const kJPAckSearchHistory = @"kJPAckSearchHistory";
 NSString * const kJPAckSearchOptions = @"kJPAckSearchOptions";
 NSString * const kJPAckWindowPosition = @"kJPAckWindowPosition";
-NSString * const kJPAckUseBTA = @"kJPAckUseBTA";
+NSString * const kJPAckUseAg = @"kJPAckUseAg";
 
 @synthesize fileName;
 @synthesize projectDirectory;
@@ -51,7 +51,7 @@ NSString * const kJPAckUseBTA = @"kJPAckUseBTA";
 @synthesize folders;
 @synthesize currentProcess;
 @synthesize currentTypesProcess;
-@synthesize useBTA;
+@synthesize useAg;
 
 + (NSSet*)keyPathsForValuesAffectingRunning
 {
@@ -109,7 +109,7 @@ NSString * const kJPAckUseBTA = @"kJPAckUseBTA";
   self.context = [[preferences objectForKey:kJPAckShowContext] boolValue];
   self.symlinks = [[preferences objectForKey:kJPAckFollowSymlinks] boolValue];
   self.folders = [[preferences objectForKey:kJPAckFolderReferences] boolValue];
-  self.useBTA = [[preferences objectForKey:kJPAckUseBTA] boolValue];
+  self.useAg = [[preferences objectForKey:kJPAckUseAg] boolValue];
 
   NSArray* savedHistory = [preferences objectForKey:kJPAckSearchHistory];
   self.history = (savedHistory) ? savedHistory : [NSArray array];
@@ -154,7 +154,7 @@ NSString * const kJPAckUseBTA = @"kJPAckUseBTA";
   [preferences setObject:[NSNumber numberWithBool:self.context] forKey:kJPAckShowContext];
   [preferences setObject:[NSNumber numberWithBool:self.symlinks] forKey:kJPAckFollowSymlinks];
   [preferences setObject:[NSNumber numberWithBool:self.folders] forKey:kJPAckFolderReferences];
-  [preferences setObject:[NSNumber numberWithBool:self.useBTA] forKey:kJPAckUseBTA];
+  [preferences setObject:[NSNumber numberWithBool:self.useAg] forKey:kJPAckUseAg];
 
   [preferences setObject:self.history forKey:kJPAckSearchHistory];
   [preferences setObject:[optionsField objectValue] forKey:kJPAckSearchOptions];
@@ -258,7 +258,7 @@ NSString * const kJPAckUseBTA = @"kJPAckUseBTA";
   [self.currentProcess invokeWithTerm:term
       path:path
       searchFolder:selectedSearchFolder
-      useBTA:useBTA
+      useAg:useAg
       literal:literal
       nocase:nocase
       words:words

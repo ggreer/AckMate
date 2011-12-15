@@ -44,7 +44,7 @@ enum {
   return self;
 }
 
-- (void)invokeWithTerm:(NSString*)term path:(NSString*)path searchFolder:(NSString*)searchFolder useBTA:(BOOL)useBTA literal:(BOOL)literal nocase:(BOOL)nocase words:(BOOL)words context:(BOOL)context symlinks:(BOOL)symlinks folderPattern:(NSString*)folderPattern options:(NSArray*)options
+- (void)invokeWithTerm:(NSString*)term path:(NSString*)path searchFolder:(NSString*)searchFolder useAg:(BOOL)useAg literal:(BOOL)literal nocase:(BOOL)nocase words:(BOOL)words context:(BOOL)context symlinks:(BOOL)symlinks folderPattern:(NSString*)folderPattern options:(NSArray*)options
 {
   ackState = ackInitial;
   [self.ackResult clearContents];
@@ -57,7 +57,7 @@ enum {
   NSMutableString* ackmateAck = [NSMutableString stringWithCapacity:100];
   [ackmateAck setString:ackmateAck_base];
 
-  if (useBTA) {
+  if (useAg) {
     [ackmateAck appendString:@"_ag"];
   }
   else {

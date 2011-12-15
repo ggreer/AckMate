@@ -135,7 +135,7 @@
     [rval setObject:[NSNumber numberWithBool:YES] forKey:kJPAckShowContext];
     [rval setObject:[NSNumber numberWithBool:YES] forKey:kJPAckFollowSymlinks];
     [rval setObject:[NSNumber numberWithBool:YES] forKey:kJPAckFolderReferences];
-    [rval setObject:[NSNumber numberWithBool:YES] forKey:kJPAckUseBTA];
+    [rval setObject:[NSNumber numberWithBool:YES] forKey:kJPAckUseAg];
   }
 
   // Add a default value of YES for kJPAckShowAdvanced
