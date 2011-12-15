@@ -23,6 +23,7 @@ extern NSString * const kJPAckWindowPosition;
   IBOutlet JPAckResultSource* ackResult;
   IBOutlet NSTokenField* optionsField;
   IBOutlet NSComboBox* searchTermField;
+  IBOutlet NSButton* useAgButton;
   IBOutlet NSButton* showContextButton;
   IBOutlet NSButton* followSymlinksButton;
   IBOutlet NSButton* useFolderReferencesButton;

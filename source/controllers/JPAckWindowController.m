@@ -203,6 +203,7 @@ NSString * const kJPAckUseAg = @"kJPAckUseAg";
 
   if (changed)
   {
+    [useAgButton setHidden:!showAdvanced];
     [showContextButton setHidden:!showAdvanced];
     [followSymlinksButton setHidden:!showAdvanced];
     [useFolderReferencesButton setHidden:!showAdvanced];
