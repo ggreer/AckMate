@@ -1,0 +1,3 @@
+[submodule "bundle_extras/the_silver_searcher"]
+	path = bundle_extras/the_silver_searcher
+	url = git://github.com/ggreer/the_silver_searcher.git
