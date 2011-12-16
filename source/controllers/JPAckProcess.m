@@ -52,16 +52,15 @@ enum {
 
   self.ackTask = [[[NSTask alloc] init] autorelease];
 
-  NSString* ackmateAck_base = [[[NSBundle bundleForClass:self.class] resourcePath] stringByAppendingPathComponent:@"ackmate"];
-
+  NSString* ackmateAck_base = [[NSBundle bundleForClass:self.class] resourcePath];
   NSMutableString* ackmateAck = [NSMutableString stringWithCapacity:100];
   [ackmateAck setString:ackmateAck_base];
 
   if (useAg) {
-    [ackmateAck appendString:@"_ag"];
+    [ackmateAck appendString:@"/ag"];
   }
   else {
-    [ackmateAck appendString:@"_ack"];
+    [ackmateAck appendString:@"/ackmate_ack"];
   }
 
   [self.ackTask setCurrentDirectoryPath:path];
