@@ -80,7 +80,7 @@ enum {
   if (nocase)
     [args addObject:@"--ignore-case"];
   else
-    [args addObject:@"--nosmart-case"];
+    [args addObject:@"--case-sensitive"];
 
   if (folderPattern)
   {
