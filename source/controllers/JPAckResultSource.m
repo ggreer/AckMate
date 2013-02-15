@@ -170,7 +170,7 @@ NSString* const amContentColumn  = @"amContentColumn";
 
 - (NSInteger)tableView:(NSTableView *)tableView spanningColumnForRow:(NSInteger)row
 {
-  JPAckResultType rt = [[self.resultRows objectAtIndex:row] resultType];
+  JPAckResultType rt = [[self.resultRows objectAtIndex:row] ackResultType];
   if (rt == JPResultTypeFilename || rt == JPResultTypeError)
     return 1;
 
@@ -181,7 +181,7 @@ NSString* const amContentColumn  = @"amContentColumn";
 {
   JPAckResultRep* resultRep = [self.resultRows objectAtIndex:row];
 
-  switch([resultRep resultType])
+  switch([resultRep ackResultType])
   {
     case JPResultTypeFilename:
       return headerHeight;
@@ -210,12 +210,12 @@ NSString* const amContentColumn  = @"amContentColumn";
   JPAckResultRep* rep = [self.resultRows objectAtIndex:row];
   JPAckResult* resultObject = [rep resultObject];
 
-  if (resultObject.resultType == JPResultTypeFilename)
+  if (resultObject.ackResultType == JPResultTypeFilename)
   {
     [self toggleFileRep:rep atIndex:row];
     return YES;
   }
-  else if (resultObject.resultType == JPResultTypeContext || resultObject.resultType == JPResultTypeMatchingLine)
+  else if (resultObject.ackResultType == JPResultTypeContext || resultObject.ackResultType == JPResultTypeMatchingLine)
   {
     NSString* filenameToOpen = [[[rep parentObject] resultObject] lineContent];
     NSRange selectionRange = NSMakeRange(0,0);
@@ -271,7 +271,7 @@ NSString* const amContentColumn  = @"amContentColumn";
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row
 {
-  JPAckResultType itemtype = [[self.resultRows objectAtIndex:row] resultType];
+  JPAckResultType itemtype = [[self.resultRows objectAtIndex:row] ackResultType];
   return ((itemtype == JPResultTypeMatchingLine || itemtype == JPResultTypeContext) && !([[NSApp currentEvent] modifierFlags] & NSControlKeyMask));
 }
 
@@ -283,7 +283,7 @@ NSString* const amContentColumn  = @"amContentColumn";
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
   JPAckResultRep* rep = [self.resultRows objectAtIndex:row];
-  JPAckResultType resultType = [rep resultType];
+  JPAckResultType resultType = [rep ackResultType];
   id value = nil;
   
   if ([tableColumn identifier] == amLineNumberColumn)
@@ -296,7 +296,7 @@ NSString* const amContentColumn  = @"amContentColumn";
     if (!lineContent)
       lineContent = @"";
 
-    if ([rep resultType] == JPResultTypeMatchingLine)
+    if ([rep ackResultType] == JPResultTypeMatchingLine)
     {
       NSRange contentRange = NSMakeRange(0, [lineContent length]);
 
@@ -306,7 +306,7 @@ NSString* const amContentColumn  = @"amContentColumn";
 
       value = attributedContent;
     }
-    else if ([rep resultType] == JPResultTypeFilename)
+    else if ([rep ackResultType] == JPResultTypeFilename)
       value = [[[NSMutableAttributedString alloc] initWithString:lineContent attributes:headingAttributes] autorelease];
     else
       value = lineContent;
@@ -317,13 +317,13 @@ NSString* const amContentColumn  = @"amContentColumn";
 
 - (BOOL)tableView:(NSTableView *)tableView isStickyRow:(NSInteger)row
 {
-  return ([[self.resultRows objectAtIndex:row] resultType] == JPResultTypeFilename);
+  return ([[self.resultRows objectAtIndex:row] ackResultType] == JPResultTypeFilename);
 }
 
 - (void)tableView:(NSTableView *)tableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)row
 {
   JPAckResultRep* rep = [self.resultRows objectAtIndex:row];
-  [(JPAckResultCell*)aCell configureType:[rep resultType] alternate:[rep alternate] collapsed:[rep collapsed] contentColumn:([aTableColumn identifier] != amLineNumberColumn)];
+  [(JPAckResultCell*)aCell configureType:[rep ackResultType] alternate:[rep alternate] collapsed:[rep collapsed] contentColumn:([aTableColumn identifier] != amLineNumberColumn)];
 }
 
 - (BOOL)tableView:(NSTableView *)tableView shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -344,7 +344,7 @@ NSString* const amContentColumn  = @"amContentColumn";
   JPAckResultRep* clickRep = [self.resultRows objectAtIndex:row];
   JPAckResultRep* fileRep = [clickRep parentObject] ? [clickRep parentObject] : clickRep;
 
-  if ([fileRep resultType] != JPResultTypeFilename)
+  if ([fileRep ackResultType] != JPResultTypeFilename)
     return nil;
 
   NSMenu* mfe = [[[NSMenu alloc] initWithTitle:@""] autorelease];

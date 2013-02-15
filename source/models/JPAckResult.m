@@ -8,7 +8,7 @@
 @end
 
 @implementation JPAckResult
-@synthesize resultType;
+@synthesize ackResultType;
 @synthesize lineNumber;
 @synthesize lineContent;
 @synthesize matchRanges;
@@ -43,7 +43,7 @@
 {
   if (self = [super init])
   {
-    resultType = resultType_;
+    ackResultType = resultType_;
     lineNumber = [lineNumber_ copy];
     lineContent = [lineContent_ copy];
     matchRanges = [matchRanges_ copy];

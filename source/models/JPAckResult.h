@@ -13,12 +13,12 @@ enum {
 typedef NSInteger JPAckResultType;
 
 @interface JPAckResult : NSObject {
-  JPAckResultType resultType;
+  JPAckResultType ackResultType;
   NSString* lineNumber;
   NSString* lineContent;
   NSArray* matchRanges;
 }
-@property(nonatomic, readonly) JPAckResultType resultType;
+@property(nonatomic, readonly) JPAckResultType ackResultType;
 @property(nonatomic, readonly) NSString* lineNumber;
 @property(nonatomic, readonly) NSString* lineContent;
 @property(nonatomic, readonly) NSArray* matchRanges;

@@ -45,9 +45,9 @@
   return resultObject.lineContent;
 }
 
-- (JPAckResultType)resultType
+- (JPAckResultType)ackResultType
 {
-  return resultObject.resultType;
+  return resultObject.ackResultType;
 }
 
 - (NSArray*)children

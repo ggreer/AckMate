@@ -28,5 +28,5 @@
 - (NSArray*)children;
 - (void)addChild:(JPAckResultRep*)childObject;
 
-- (JPAckResultType)resultType;
+- (JPAckResultType)ackResultType;
 @end
