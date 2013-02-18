@@ -1,5 +1,7 @@
 ## Description
 
+This is a fork of AckMate that allows you to use [Ag](https://github.com/ggreer/the_silver_searcher) or Ack to search files. Since GitHub removed downloads, you can find the latest build of the plugin [here](http://geoff.greer.fm/files/AckMate.tmplugin.zip).
+
 **AckMate** is a [TextMate](http://macromates.com/) plugin for running [Ack](http://betterthangrep.com) in a Cocoa window.
 
 *This plugin is only compatible with Mac OS X 10.5 and above.*
